@@ -29,9 +29,9 @@ function CourseLAyout({params}) {
         }
 
  const GenerateChapterContent=()=>{
-  const chapters =course?.courseOutput?.course.chapters;
-  chapters.forEach((chapters,index)=>{
-    const PROMPT = "Explain the concept in Detail on Topic:"+course?.name+",Chapter:"+chapter?.name+"in JSON Format with field as the description in detail, Code Example (HTML Code format) if applicable"
+  const chapters =course?.courseOutput?.chapters;
+  chapters.forEach((chapter,index)=>{
+    const PROMPT = "Explain the concept in Detail on Topic:"+course?.name+",Chapter:"+chapter?.name+"in JSON Format with a list of array with field as the description in detail, Code Example (Code feild in <precode> format) if applicable"
     console.log(PROMPT)
   })
   
