@@ -1,14 +1,16 @@
 "use client"
 import Image from 'next/image'
 
-import React from 'react'
+import React, { useContext } from 'react'
 import { IoHomeOutline, IoShieldCheckmarkOutline, IoPowerOutline } from "react-icons/io5";
 import { HiOutlineSquare3Stack3D } from "react-icons/hi2";
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Progress } from "@/components/ui/progress"
+import { UserCourseListContext } from '@/app/_context/UserCourseList';
 
 function SideBar() {
+    const {userCourseList,setUseCourseList} = useContext(UserCourseListContext)
     const Menu =[
         {
             id:1,
@@ -41,9 +43,10 @@ function SideBar() {
 
     ]
     const path = usePathname();
+
   return (
     <div className='fixed h-full md:w-64 p-5 shadow-md'>
-        <Image src={"/file.svg"} width={50} height={50} alt={'Loading'}/>
+        <Image src={"/COURSEGEN.svg"} width={150} height={150} alt={'Loading'}/>
         <hr className='my-5' />
             
         <ul>
@@ -58,8 +61,8 @@ function SideBar() {
         </ul>
 
         <div className='absolute bottom-10 w-[80%]'>
-            <Progress value={33}/>
-            <h2 className='text-sm mt-1 mb-2'>3 Out of 5 Course Created</h2>
+            <Progress value={(userCourseList?.length/5)*100}/>
+            <h2 className='text-sm mt-1 mb-2'>{userCourseList?.length} Out of 5 Course created</h2>
             <h2 className='text-xs text-gray-400'>Upgrade your plan to unlimited course generate</h2>
         </div>
     </div>

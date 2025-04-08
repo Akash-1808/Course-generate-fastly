@@ -38,7 +38,7 @@ function CreateCourse() {
         const router =useRouter()
         const {user} = useUser()
         useEffect(()=>{
-            console.log(userCourseInput)
+            // console.log(userCourseInput)
 
         },[userCourseInput])
 
@@ -86,7 +86,7 @@ function CreateCourse() {
                         userName:user?.fullName,
                         userProfileImage:user?.imageUrl
                 })
-                console.log(id)
+                // console.log(id)
                 setLoading(false);
                 router.replace('/create-course/'+id)
               } catch (error) {
@@ -121,9 +121,9 @@ function CreateCourse() {
             {activeIndex==0?<SelectCategory/>:activeIndex==1?<TopicDescription/>:<SelectOption/>}
             <div className='flex justify-between mt-10'>
                     <Button disabled={activeIndex==0} onClick={()=>setactiveIndex(activeIndex-1)} variant='outline'>Previous</Button>
-                    {activeIndex<2 && <Button disabled={checkStatus()} onClick={()=>{ console.log(activeIndex) 
+                    {activeIndex<2 && <Button disabled={checkStatus()} onClick={()=>{ 
                         setactiveIndex(activeIndex+1)}}>Next</Button>}
-                       {activeIndex==2 && <Button disabled={checkStatus()} onClick={()=>{ console.log(activeIndex) 
+                       {activeIndex==2 && <Button disabled={checkStatus()} onClick={()=>{  
                         GenerateCourseLayout()}}>Generate Course Layout</Button>} 
             </div>
         </div>

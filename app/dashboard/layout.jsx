@@ -1,13 +1,19 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react'
 import SideBar from './_components/SideBar'
 import Explore from './explore/page'
 import Header from '../_components/Header'
+import { UserCourseListContext } from '../_context/UserCourseList'
 
 
 
 function DashBoardlayout({children}) {
+
+    const [userCourseList,setUserCourseList] = useState([])
+
   return (
-    <div>
+    <UserCourseListContext.Provider value={{userCourseList,setUserCourseList}}>
+       <div>
         <div className='md:w-64 hidden md:block'>
            <SideBar/>
         </div>
@@ -16,6 +22,8 @@ function DashBoardlayout({children}) {
             <div className='p-10'>{children}</div>
         </div>
     </div>
+    </UserCourseListContext.Provider>
+   
   )
 }
 
